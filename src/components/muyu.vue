@@ -4,7 +4,7 @@ import axios from "axios";
 import MP3 from "../assets/muyu.mp3";
 
 const is_qiao = ref(false);
-const current_gongde = ref(-1);
+const current_gongde = ref(1);
 const timer = ref();
 const auto_update_timer = ref();
 const audio = ref();
@@ -39,7 +39,6 @@ const handleQiao = () => {
     setTimeout(() => {
       if (is_qiao.value === true) {
         is_qiao.value = false;
-        // audio.value.pause();
       }
     }, 100);
   }
