@@ -4,20 +4,20 @@ import axios from "axios";
 import MP3 from "../assets/muyu.mp3";
 
 const is_qiao = ref(false);
-const current_gongde = ref(1);
-const timer = ref();
+const current_gongde = ref(100000000);
+// const timer = ref();
 const auto_update_timer = ref();
 const audio = ref();
 
 onMounted(() => {
   updateGongDe(0);
   onInitAudio();
-  timer.value = setInterval(() => current_gongde.value--, 1000);
+  // timer.value = setInterval(() => current_gongde.value--, 1000);
   // auto_update_timer.value = setInterval(() => updateGongDe(-10), 10000); // 后端定时任务
 });
 
 onUnmounted(() => {
-  clearInterval(timer.value);
+  // clearInterval(timer.value);
   clearInterval(auto_update_timer.value);
 });
 
@@ -64,7 +64,7 @@ const updateGongDe = async (current_count: number) => {
       <h1>你功德没了</h1>
       <p class="info">
         由于你扶老奶奶过马路后，向其索要小费而不得后又将老奶奶送回马路对面，导致
-        <b>你的功德会一直递减，</b>
+        <b>你的功德会一直递减 (1堒/秒)，</b>
         但是不要惊慌！你可以<b>敲击下面的木鱼来增加功德！</b>
         <br />
         <b class="tip">注意！功德归零后网站将会关闭！</b>救赎自己吧！
@@ -72,7 +72,7 @@ const updateGongDe = async (current_count: number) => {
       <div class="rest-bar">
         当前剩余功德：
         <p>
-          <b class="rest">{{ rest_gongde }}</b>
+          <b class="rest">{{ rest_gongde }}</b> 堒
         </p>
       </div>
 
@@ -100,6 +100,12 @@ const updateGongDe = async (current_count: number) => {
       提供
       <br />
       他一直这么善良的，不用谢
+
+      <div style="margin-top: 8px">
+        <img
+          src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fmuyu.aoau.top&count_bg=%2379C83D&title_bg=%23555555&icon=actigraph.svg&icon_color=%23E7E7E7&title=%E8%A2%AB%E6%95%91%E8%B5%8E%E8%80%85&edge_flat=true"
+        />
+      </div>
     </footer>
   </div>
 </template>
@@ -142,6 +148,6 @@ const updateGongDe = async (current_count: number) => {
 
 .footer {
   position: fixed;
-  bottom: 10px;
+  bottom: 15px;
 }
 </style>
